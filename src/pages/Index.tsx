@@ -48,7 +48,7 @@ const Index = () => {
   }, [setSearchParams]);
 
   return (
-    <main className="min-h-screen bg-secondary">
+    <main className="min-h-screen bg-secondary overflow-x-hidden">
       <Navbar />
       <HeroSection />
       <OlfactoryNotes onCategoryClick={handleCategoryClick} />
