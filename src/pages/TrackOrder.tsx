@@ -10,7 +10,7 @@ interface TrackedOrder {
   id: string;
   short_id: string;
   customer_name: string;
-  items: { name: string; volume: string; quantity: number; image: string | null }[];
+  items: { product_id?: string; name: string; volume: string; quantity: number; image: string | null }[];
   subtotal: number;
   discount: number;
   total: number;
