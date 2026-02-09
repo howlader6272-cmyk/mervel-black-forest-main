@@ -1,4 +1,5 @@
 import { Package, Truck, CheckCircle2, Clock, XCircle, MapPin } from "lucide-react";
+import { productImages } from "@/data/productImages";
 
 interface TrackedOrder {
   id: string;
