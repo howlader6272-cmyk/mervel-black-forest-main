@@ -120,6 +120,7 @@ Deno.serve(async (req) => {
         short_id: data.id.slice(0, 8).toUpperCase(),
         customer_name: maskedName,
         items: orderItems.map((item: any) => ({
+          product_id: item.product_id || null,
           name: item.name,
           volume: item.volume,
           quantity: item.quantity,
