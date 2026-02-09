@@ -1,10 +1,11 @@
 import { Package, Truck, CheckCircle2, Clock, XCircle, MapPin } from "lucide-react";
+import { productImages } from "@/data/productImages";
 
 interface TrackedOrder {
   id: string;
   short_id: string;
   customer_name: string;
-  items: { name: string; volume: string; quantity: number; image: string | null }[];
+  items: { product_id?: string; name: string; volume: string; quantity: number; image: string | null }[];
   subtotal: number;
   discount: number;
   total: number;
@@ -154,8 +155,8 @@ const OrderTrackCard = ({ order }: { order: TrackedOrder }) => {
           {order.items.map((item, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="w-12 h-14 bg-muted/20 rounded-sm border border-accent/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                {item.image ? (
-                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                {(item.image || (item.product_id && productImages[item.product_id])) ? (
+                  <img src={item.image || productImages[item.product_id!]} alt={item.name} className="w-full h-full object-cover" />
                 ) : (
                   <span className="font-serif text-accent/40 text-xs">M</span>
                 )}

@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Plus, Pencil, Trash2, X, Save, Search } from "lucide-react";
 import ProductImageUpload from "@/components/admin/ProductImageUpload";
+import { productImages } from "@/data/productImages";
 
 interface ProductRow {
   id: string;
@@ -251,9 +252,9 @@ const Products = () => {
             <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0">
               {/* Thumbnail */}
               <div className="w-12 h-14 bg-muted/20 rounded-sm border border-accent/10 flex-shrink-0 overflow-hidden">
-                {p.image_url ? (
+                {(p.image_url || productImages[p.slug]) ? (
                   <img
-                    src={p.image_url}
+                    src={p.image_url || productImages[p.slug]}
                     alt={p.name}
                     className="w-full h-full object-cover"
                   />
