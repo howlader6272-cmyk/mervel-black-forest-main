@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Plus, Pencil, Trash2, X, Save, Search } from "lucide-react";
 import ProductImageUpload from "@/components/admin/ProductImageUpload";
+import { productImages } from "@/data/productImages";
 
 interface ProductRow {
   id: string;
