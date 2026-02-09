@@ -142,8 +142,8 @@ const TrackOrder = () => {
                     <div className="flex items-center gap-3">
                       {/* First item thumbnail */}
                       <div className="w-10 h-12 bg-muted/20 rounded-sm border border-accent/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                        {o.items[0]?.image ? (
-                          <img src={o.items[0].image} alt="" className="w-full h-full object-cover" />
+                        {(o.items[0]?.image || (o.items[0]?.product_id && productImages[o.items[0].product_id])) ? (
+                          <img src={o.items[0].image || productImages[o.items[0].product_id!]} alt="" className="w-full h-full object-cover" />
                         ) : (
                           <span className="font-serif text-accent/40 text-[10px]">M</span>
                         )}
