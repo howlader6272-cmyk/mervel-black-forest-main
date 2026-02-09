@@ -25,7 +25,7 @@ const HeroSection = () => {
     >
       {/* Full background image */}
       <div
-        className="absolute inset-0 sm:inset-[-30px]"
+        className="absolute inset-0 sm:-inset-[30px] sm:-left-[30px] sm:-right-[30px] sm:-top-[30px] sm:-bottom-[30px]"
         style={{
           backgroundImage: `url(${isMobile ? heroMobileBg : heroFullBg})`,
           backgroundSize: "cover",
