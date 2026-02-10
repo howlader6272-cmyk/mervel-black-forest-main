@@ -69,8 +69,43 @@ const ProductDetail = () => {
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
 
+  const productUrl = `https://mervel-perfume.vercel.app/product/${product.id}`;
+  const productImageUrl = imageUrl?.startsWith("http") ? imageUrl : `https://mervel-perfume.vercel.app${imageUrl || ""}`;
+  const metaDesc = `Buy ${product.name} online from Mervel Perfume in Bangladesh. Premium fragrance, fast delivery, and 100% authentic.`;
+
+  const jsonLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": productImageUrl,
+    "description": product.longDescription || product.description,
+    "sku": product.id,
+    "brand": { "@type": "Brand", "name": "Mervel Perfume" },
+    "offers": {
+      "@type": "Offer",
+      "url": productUrl,
+      "priceCurrency": "BDT",
+      "price": selectedVariant.price,
+      "availability": "https://schema.org/InStock"
+    }
+  }), [product, selectedVariant, productUrl, productImageUrl]);
+
   return (
     <main className="min-h-screen bg-secondary">
+      <Helmet>
+        <title>{product.name} | Mervel Perfume</title>
+        <meta name="description" content={metaDesc} />
+        <meta property="og:title" content={`${product.name} | Mervel Perfume`} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:image" content={productImageUrl} />
+        <meta property="og:url" content={productUrl} />
+        <meta property="og:type" content="product" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${product.name} | Mervel Perfume`} />
+        <meta name="twitter:description" content={metaDesc} />
+        <meta name="twitter:image" content={productImageUrl} />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       <Navbar />
       <CartDrawer />
 
