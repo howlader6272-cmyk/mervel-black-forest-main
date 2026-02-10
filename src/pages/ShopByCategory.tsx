@@ -195,6 +195,12 @@ const ShopByCategory = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Helmet>
+        <title>Perfume Categories | Mervel Perfume</title>
+        <meta name="description" content="Explore our perfume collections by category at Mervel Perfume. Woody, Spicy, Floral & Musk luxury fragrances with fast delivery in Bangladesh." />
+        <meta property="og:title" content="Perfume Categories | Mervel Perfume" />
+        <meta property="og:description" content="Explore our perfume collections by category at Mervel Perfume. Luxury fragrances with fast delivery in Bangladesh." />
+      </Helmet>
       <Navbar />
 
       <main className="flex-1 pt-20 sm:pt-28 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8">
