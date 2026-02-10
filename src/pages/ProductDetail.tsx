@@ -199,7 +199,7 @@ const ProductDetail = () => {
                 ))}
               </div>
               <p className="mt-2 text-accent font-serif text-lg font-semibold">
-                BDT {selectedVariant.price.toLocaleString()}
+                BDT {selectedVariant?.price.toLocaleString()}
               </p>
             </div>
 
