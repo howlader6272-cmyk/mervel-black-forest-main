@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { Product } from "@/data/products";
 import { productImages } from "@/data/productImages";
 import { noteDescriptions } from "@/data/noteDescriptions";
@@ -19,6 +20,7 @@ const ProductDetail = () => {
   const imageUrl = product ? (product.image || productImages[product.id]) : undefined;
   const { addToCart } = useCart();
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+  const [expandedNote, setExpandedNote] = useState<string | null>(null);
 
   // Default to largest variant
   useEffect(() => {
@@ -26,6 +28,32 @@ const ProductDetail = () => {
       setSelectedVariantIdx(product.variants.length - 1);
     }
   }, [product]);
+
+  const selectedVariant = product?.variants[selectedVariantIdx] ?? null;
+
+  const productUrl = `https://mervel-perfume.vercel.app/product/${productId}`;
+  const productImageUrl = imageUrl?.startsWith("http") ? imageUrl : `https://mervel-perfume.vercel.app${imageUrl || ""}`;
+  const metaDesc = product ? `Buy ${product.name} online from Mervel Perfume in Bangladesh. Premium fragrance, fast delivery, and 100% authentic.` : "";
+
+  const jsonLd = useMemo(() => {
+    if (!product || !selectedVariant) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": productImageUrl,
+      "description": product.longDescription || product.description,
+      "sku": product.id,
+      "brand": { "@type": "Brand", "name": "Mervel Perfume" },
+      "offers": {
+        "@type": "Offer",
+        "url": productUrl,
+        "priceCurrency": "BDT",
+        "price": selectedVariant.price,
+        "availability": "https://schema.org/InStock"
+      }
+    };
+  }, [product, selectedVariant, productUrl, productImageUrl]);
 
   if (loading) {
     return (
@@ -61,7 +89,7 @@ const ProductDetail = () => {
     );
   }
 
-  const selectedVariant = product.variants[selectedVariantIdx];
+  
 
   // Related products: same category, exclude current, max 4
   const related = products
@@ -70,7 +98,24 @@ const ProductDetail = () => {
 
   return (
     <main className="min-h-screen bg-secondary">
+      {product && (
+        <Helmet>
+          <title>{product.name} | Mervel Perfume</title>
+          <meta name="description" content={metaDesc} />
+          <meta property="og:title" content={`${product.name} | Mervel Perfume`} />
+          <meta property="og:description" content={metaDesc} />
+          <meta property="og:image" content={productImageUrl} />
+          <meta property="og:url" content={productUrl} />
+          <meta property="og:type" content="product" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={`${product.name} | Mervel Perfume`} />
+          <meta name="twitter:description" content={metaDesc} />
+          <meta name="twitter:image" content={productImageUrl} />
+          {jsonLd && <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>}
+        </Helmet>
+      )}
       <Navbar />
+      <CartDrawer />
       <CartDrawer />
 
       <div className="container mx-auto px-4 sm:px-6 pt-20 sm:pt-28 pb-12 sm:pb-16">
@@ -154,7 +199,7 @@ const ProductDetail = () => {
                 ))}
               </div>
               <p className="mt-2 text-accent font-serif text-lg font-semibold">
-                BDT {selectedVariant.price.toLocaleString()}
+                BDT {selectedVariant?.price.toLocaleString()}
               </p>
             </div>
 
@@ -169,11 +214,11 @@ const ProductDetail = () => {
 
             {/* Add to Cart */}
             <button
-              onClick={() => addToCart(product, selectedVariant)}
+              onClick={() => selectedVariant && addToCart(product, selectedVariant)}
               className="gold-shimmer flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold hover:bg-accent/90 transition-all duration-400 rounded-sm mt-2"
             >
               <ShoppingBag className="w-4 h-4" />
-              Add to Cart — {selectedVariant.volume}
+              Add to Cart — {selectedVariant?.volume}
             </button>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { CartProvider } from "@/contexts/CartContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
@@ -25,34 +26,36 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <AuthProvider>
-        <CartProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path="/categories" element={<ShopByCategory />} />
-              <Route path="/" element={<Index />} />
-              <Route path="/product/:productId" element={<ProductDetail />} />
-              <Route path="/collection/:collectionId" element={<CollectionDetail />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/thank-you" element={<ThankYou />} />
-              <Route path="/track-order" element={<TrackOrder />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<Dashboard />} />
-                <Route path="products" element={<Products />} />
-                <Route path="orders" element={<Orders />} />
-                <Route path="analytics" element={<Analytics />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </CartProvider>
-      </AuthProvider>
-    </TooltipProvider>
+    <HelmetProvider>
+      <TooltipProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/categories" element={<ShopByCategory />} />
+                <Route path="/" element={<Index />} />
+                <Route path="/product/:productId" element={<ProductDetail />} />
+                <Route path="/collection/:collectionId" element={<CollectionDetail />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/track-order" element={<TrackOrder />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Dashboard />} />
+                  <Route path="products" element={<Products />} />
+                  <Route path="orders" element={<Orders />} />
+                  <Route path="analytics" element={<Analytics />} />
+                </Route>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
+        </AuthProvider>
+      </TooltipProvider>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 
