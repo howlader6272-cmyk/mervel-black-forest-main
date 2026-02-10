@@ -22,6 +22,7 @@ const HeroSection = () => {
       ref={sectionRef}
       id="home"
       className="relative min-h-[100svh] flex items-end sm:items-center overflow-hidden pb-20 sm:pb-0"
+      aria-label="Hero section"
     >
       {/* Full background image */}
       <div
