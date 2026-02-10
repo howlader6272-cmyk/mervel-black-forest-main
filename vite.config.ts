@@ -20,14 +20,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Enable minification
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    // Minification via esbuild (Vite default, no extra dependency)
+    minify: "esbuild",
     // Optimal chunk splitting
     rollupOptions: {
       output: {
