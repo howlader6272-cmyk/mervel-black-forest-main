@@ -15,6 +15,8 @@ import ThankYou from "./pages/ThankYou";
 import TrackOrder from "./pages/TrackOrder";
 import ShopByCategory from "./pages/ShopByCategory";
 import Auth from "./pages/Auth";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Products from "./pages/admin/Products";
@@ -43,6 +45,8 @@ const App = () => (
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/track-order" element={<TrackOrder />} />
                 <Route path="/auth" element={<Auth />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/admin" element={<AdminLayout />}>
                   <Route index element={<Dashboard />} />
                   <Route path="products" element={<Products />} />

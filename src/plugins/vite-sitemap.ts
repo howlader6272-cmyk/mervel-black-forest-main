@@ -12,7 +12,7 @@ const STATIC_PAGES = [
 
 const COLLECTIONS = ["dark-elegance", "golden-opulence"];
 
-function buildSitemapXml(productIds: string[]): string {
+function buildSitemapXml(productIds: string[], blogSlugs: string[]): string {
   const today = new Date().toISOString().split("T")[0];
 
   const urls = [
@@ -40,6 +40,21 @@ function buildSitemapXml(productIds: string[]): string {
     <priority>0.8</priority>
   </url>`
     ),
+    // Blog list page
+    `  <url>
+    <loc>${BASE_URL}/blog</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>`,
+    ...blogSlugs.map(
+      (slug) => `  <url>
+    <loc>${BASE_URL}/blog/${slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>`
+    ),
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -54,6 +69,7 @@ export function sitemapPlugin(): Plugin {
     apply: "build",
     async generateBundle() {
       let productIds: string[] = [];
+      let blogSlugs: string[] = [];
 
       try {
         const supabaseUrl = process.env.VITE_SUPABASE_URL;
@@ -61,19 +77,27 @@ export function sitemapPlugin(): Plugin {
 
         if (supabaseUrl && supabaseKey) {
           const supabase = createClient(supabaseUrl, supabaseKey);
-          const { data } = await supabase
+          const { data: products } = await supabase
             .from("products")
             .select("id")
             .eq("is_active", true);
-          if (data) {
-            productIds = data.map((p: { id: string }) => p.id);
+          if (products) {
+            productIds = products.map((p: { id: string }) => p.id);
+          }
+
+          const { data: blogs } = await supabase
+            .from("blog_posts")
+            .select("slug")
+            .eq("is_published", true);
+          if (blogs) {
+            blogSlugs = blogs.map((b: { slug: string }) => b.slug);
           }
         }
       } catch (e) {
-        console.warn("[sitemap] Could not fetch products, using static pages only:", e);
+        console.warn("[sitemap] Could not fetch data, using static pages only:", e);
       }
 
-      const xml = buildSitemapXml(productIds);
+      const xml = buildSitemapXml(productIds, blogSlugs);
 
       this.emitFile({
         type: "asset",

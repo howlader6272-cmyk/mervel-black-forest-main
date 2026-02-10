@@ -31,6 +31,7 @@ const Navbar = () => {
   const navLinks: { label: string; hash?: string; href?: string }[] = [
     { label: "Shop", hash: "#collection" },
     { label: "Categories", href: "/categories" },
+    { label: "Blog", href: "/blog" },
     { label: "Track Order", href: "/track-order" },
     { label: "About", hash: "#about" },
   ];
