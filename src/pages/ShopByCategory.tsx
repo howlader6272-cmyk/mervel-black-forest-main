@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { TreePine, Flame, Flower2, Wind } from "lucide-react";
 import Navbar from "@/components/Navbar";
