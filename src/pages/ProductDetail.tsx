@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { Product } from "@/data/products";
 import { productImages } from "@/data/productImages";
 import { noteDescriptions } from "@/data/noteDescriptions";
