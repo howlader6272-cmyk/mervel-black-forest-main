@@ -1,3 +1,12 @@
+import { Facebook, Linkedin, BookOpen, HelpCircle } from "lucide-react";
+
+const socialLinks = [
+  { label: "Facebook", href: "https://www.facebook.com/mervelperfume", icon: Facebook },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/mervelperfume", icon: Linkedin },
+  { label: "Medium", href: "https://medium.com/@mervelperfume", icon: BookOpen },
+  { label: "Quora", href: "https://www.quora.com/profile/Mervel-Perfume", icon: HelpCircle },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-secondary">
@@ -15,6 +24,11 @@ const Footer = () => {
                 Track Order
               </a>
             </li>
+            <li>
+              <a href="/blog" className="text-muted-foreground hover:text-accent transition-colors duration-300 text-xs sm:text-sm tracking-wide">
+                Blog
+              </a>
+            </li>
             {["Shipping Policy", "Returns", "Contact"].map((link) => (
               <li key={link}>
                 <a
@@ -26,6 +40,22 @@ const Footer = () => {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8">
+          {socialLinks.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="w-9 h-9 rounded-full border border-accent/20 flex items-center justify-center text-muted-foreground hover:text-accent hover:border-accent/60 transition-all duration-300"
+            >
+              <Icon className="w-4 h-4" />
+            </a>
+          ))}
         </div>
 
         {/* Copyright */}
