@@ -12,7 +12,7 @@ const STATIC_PAGES = [
 
 const COLLECTIONS = ["dark-elegance", "golden-opulence"];
 
-function buildSitemapXml(productIds: string[]): string {
+function buildSitemapXml(productIds: string[], blogSlugs: string[]): string {
   const today = new Date().toISOString().split("T")[0];
 
   const urls = [
