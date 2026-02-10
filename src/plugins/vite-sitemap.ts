@@ -40,6 +40,21 @@ function buildSitemapXml(productIds: string[], blogSlugs: string[]): string {
     <priority>0.8</priority>
   </url>`
     ),
+    // Blog list page
+    `  <url>
+    <loc>${BASE_URL}/blog</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>`,
+    ...blogSlugs.map(
+      (slug) => `  <url>
+    <loc>${BASE_URL}/blog/${slug}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>`
+    ),
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
