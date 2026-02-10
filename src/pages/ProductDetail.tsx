@@ -89,7 +89,7 @@ const ProductDetail = () => {
     );
   }
 
-  const selectedVariant = product.variants[selectedVariantIdx];
+  const activeVariant = product.variants[selectedVariantIdx];
 
   // Related products: same category, exclude current, max 4
   const related = products
