@@ -20,6 +20,7 @@ const ProductDetail = () => {
   const imageUrl = product ? (product.image || productImages[product.id]) : undefined;
   const { addToCart } = useCart();
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+  const [expandedNote, setExpandedNote] = useState<string | null>(null);
 
   // Default to largest variant
   useEffect(() => {
@@ -27,6 +28,32 @@ const ProductDetail = () => {
       setSelectedVariantIdx(product.variants.length - 1);
     }
   }, [product]);
+
+  const selectedVariant = product?.variants[selectedVariantIdx] ?? null;
+
+  const productUrl = `https://mervel-perfume.vercel.app/product/${productId}`;
+  const productImageUrl = imageUrl?.startsWith("http") ? imageUrl : `https://mervel-perfume.vercel.app${imageUrl || ""}`;
+  const metaDesc = product ? `Buy ${product.name} online from Mervel Perfume in Bangladesh. Premium fragrance, fast delivery, and 100% authentic.` : "";
+
+  const jsonLd = useMemo(() => {
+    if (!product || !selectedVariant) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "image": productImageUrl,
+      "description": product.longDescription || product.description,
+      "sku": product.id,
+      "brand": { "@type": "Brand", "name": "Mervel Perfume" },
+      "offers": {
+        "@type": "Offer",
+        "url": productUrl,
+        "priceCurrency": "BDT",
+        "price": selectedVariant.price,
+        "availability": "https://schema.org/InStock"
+      }
+    };
+  }, [product, selectedVariant, productUrl, productImageUrl]);
 
   if (loading) {
     return (
