@@ -43,6 +43,7 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             alt={product.name}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
