@@ -15,6 +15,8 @@ import ThankYou from "./pages/ThankYou";
 import TrackOrder from "./pages/TrackOrder";
 import ShopByCategory from "./pages/ShopByCategory";
 import Auth from "./pages/Auth";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import AdminLayout from "./pages/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Products from "./pages/admin/Products";
