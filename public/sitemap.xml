@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mervel.lovable.app/</loc>
+    <loc>https://mervel-perfume.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mervel.lovable.app/categories</loc>
+    <loc>https://mervel-perfume.vercel.app/categories</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mervel.lovable.app/checkout</loc>
+    <loc>https://mervel-perfume.vercel.app/checkout</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mervel.lovable.app/track-order</loc>
+    <loc>https://mervel-perfume.vercel.app/track-order</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>

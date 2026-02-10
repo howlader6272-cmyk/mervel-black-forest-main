@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://mervel.lovable.app/sitemap.xml
+Sitemap: https://mervel-perfume.vercel.app/sitemap.xml
