@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { collectionCombos } from "@/data/collections";
 import { products } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
