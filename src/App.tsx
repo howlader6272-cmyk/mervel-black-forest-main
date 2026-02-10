@@ -8,6 +8,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { CartProvider } from "@/contexts/CartContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ScrollToTop from "./components/ScrollToTop";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Lazy-loaded pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -67,6 +68,7 @@ const App = () => (
                 </Routes>
               </Suspense>
             </BrowserRouter>
+            <SpeedInsights />
           </CartProvider>
         </AuthProvider>
       </TooltipProvider>
