@@ -214,11 +214,11 @@ const ProductDetail = () => {
 
             {/* Add to Cart */}
             <button
-              onClick={() => addToCart(product, selectedVariant)}
+              onClick={() => selectedVariant && addToCart(product, selectedVariant)}
               className="gold-shimmer flex items-center justify-center gap-2 bg-accent text-accent-foreground px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold hover:bg-accent/90 transition-all duration-400 rounded-sm mt-2"
             >
               <ShoppingBag className="w-4 h-4" />
-              Add to Cart — {selectedVariant.volume}
+              Add to Cart — {selectedVariant?.volume}
             </button>
           </div>
         </div>
