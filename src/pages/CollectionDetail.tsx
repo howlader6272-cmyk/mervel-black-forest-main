@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { collectionCombos } from "@/data/collections";
 import { products } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
@@ -63,6 +64,12 @@ const CollectionDetail = () => {
 
   return (
     <main className="min-h-screen bg-secondary">
+      <Helmet>
+        <title>{collection.name} Collection | Mervel Perfume</title>
+        <meta name="description" content={`Explore our ${collection.name} perfume collection at Mervel Perfume. Luxury fragrances with fast delivery in Bangladesh.`} />
+        <meta property="og:title" content={`${collection.name} Collection | Mervel Perfume`} />
+        <meta property="og:description" content={`Explore our ${collection.name} perfume collection at Mervel Perfume. Luxury fragrances with fast delivery in Bangladesh.`} />
+      </Helmet>
       <Navbar />
 
       {/* Hero Banner */}
