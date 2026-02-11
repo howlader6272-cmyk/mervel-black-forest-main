@@ -33,7 +33,7 @@ const Footer = () => {
               <li key={link}>
                 <a
                   href="#"
-                  className="text-muted-foreground hover:text-accent transition-colors duration-300 text-xs sm:text-sm tracking-wide"
+                  className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium"
                 >
                   {link}
                 </a>
