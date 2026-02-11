@@ -57,14 +57,14 @@ const Navbar = () => {
               {link.href ? (
                 <Link
                   to={link.href}
-                  className="text-sm uppercase tracking-widest text-foreground hover:text-accent transition-colors duration-300 px-4 py-1.5 border border-accent/10 hover:border-accent/30 bg-accent/5 hover:bg-accent/10"
+                  className="text-sm uppercase tracking-widest text-foreground hover:text-accent transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
               ) : (
                 <button
                   onClick={() => scrollToSection(link.hash!)}
-                  className="text-sm uppercase tracking-widest text-foreground hover:text-accent transition-colors duration-300 px-4 py-1.5 border border-accent/10 hover:border-accent/30 bg-accent/5 hover:bg-accent/10"
+                  className="text-sm uppercase tracking-widest text-foreground hover:text-accent transition-colors duration-300"
                 >
                   {link.label}
                 </button>
