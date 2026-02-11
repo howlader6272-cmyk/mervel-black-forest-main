@@ -29,13 +29,17 @@ const Footer = () => {
                 Blog
               </a>
             </li>
-            {["Shipping Policy", "Returns", "Contact"].map((link) => (
-              <li key={link}>
+            {[
+              { label: "Shipping Policy", href: "/page/shipping-policy" },
+              { label: "Returns", href: "/page/returns" },
+              { label: "Contact", href: "/page/contact" },
+            ].map(({ label, href }) => (
+              <li key={label}>
                 <a
-                  href="#"
+                  href={href}
                   className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium"
                 >
-                  {link}
+                  {label}
                 </a>
               </li>
             ))}
