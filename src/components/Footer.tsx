@@ -18,26 +18,18 @@ const Footer = () => {
           </h3>
 
           {/* Links */}
-          <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
-            <li>
-              <a href="/track-order" className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium">
-                Track Order
-              </a>
-            </li>
-            <li>
-              <a href="/blog" className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium">
-                Blog
-              </a>
-            </li>
+          <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
             {[
-              { label: "Shipping Policy", href: "/page/shipping-policy" },
-              { label: "Returns", href: "/page/returns" },
-              { label: "Contact", href: "/page/contact" },
+              { label: "SHIPPING POLICY", href: "/page/shipping-policy" },
+              { label: "RETURNS", href: "/page/returns" },
+              { label: "CONTACT", href: "/page/contact" },
+              { label: "TRACK ORDER", href: "/track-order" },
+              { label: "BLOG", href: "/blog" },
             ].map(({ label, href }) => (
               <li key={label}>
                 <a
                   href={href}
-                  className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium"
+                  className="text-muted-foreground hover:text-accent transition-colors duration-300 text-xs sm:text-sm tracking-[0.15em] font-medium"
                 >
                   {label}
                 </a>
