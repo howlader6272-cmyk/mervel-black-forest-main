@@ -21,6 +21,7 @@ const ShopByCategory = lazy(() => import("./pages/ShopByCategory"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const AIContentPage = lazy(() => import("./pages/AIContentPage"));
 const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
 const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
 const Products = lazy(() => import("./pages/admin/Products"));
@@ -57,6 +58,7 @@ const App = () => (
                   <Route path="/auth" element={<Auth />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
+                  <Route path="/page/:pageType" element={<AIContentPage />} />
                   <Route path="/admin" element={<AdminLayout />}>
                     <Route index element={<Dashboard />} />
                     <Route path="products" element={<Products />} />
