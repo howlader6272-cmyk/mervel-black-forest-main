@@ -20,12 +20,12 @@ const Footer = () => {
           {/* Links */}
           <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-8">
             <li>
-              <a href="/track-order" className="text-muted-foreground hover:text-accent transition-colors duration-300 text-xs sm:text-sm tracking-wide">
+              <a href="/track-order" className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium">
                 Track Order
               </a>
             </li>
             <li>
-              <a href="/blog" className="text-muted-foreground hover:text-accent transition-colors duration-300 text-xs sm:text-sm tracking-wide">
+              <a href="/blog" className="inline-flex items-center px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent hover:bg-accent/15 hover:border-accent/50 transition-all duration-300 text-xs sm:text-sm tracking-wide font-medium">
                 Blog
               </a>
             </li>
